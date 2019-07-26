@@ -31,36 +31,38 @@
 					src="${pageContext.request.contextPath}/img/logo.png" alt=""
 					width="72" height="72">
 			</div>
-			<h3 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-			<h4 class="h3 mb-3 font-weight-normal">${msg}</h2>
-			<div class="form-group row">
-				<label for="loginId" class="col-sm-2 col-form-label">LoginId</label>
-				<div class="col-sm-4">
-					<form:input type="text" id="loginId" path="loginId"
-						class="form-control" placeholder="LoginId" required=""
-						autofocus="" />
-				</div>
-			</div>
-			<div class="form-group row">
-				<label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-				<div class="col-sm-4">
-					<form:input type="password" id="inputPassword" path="password"
-						class="form-control" placeholder="Password" required="" />
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="checkbox mb-3">
-					<label> <input type="checkbox" value="remember-me">
-						Remember me
-					</label>
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col-sm-10">
-					<button type="submit" class="btn btn-primary">Sign in</button>
-				</div>
-			</div>
-			<p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+			<h3 class="h3 mb-3 font-weight-normal">
+				Please sign in
+				</h1>
+				<h4 class="h3 mb-3 font-weight-normal">${msg}</h2>
+					<div class="form-group row">
+						<label for="loginId" class="col-sm-2 col-form-label">LoginId</label>
+						<div class="col-sm-4">
+							<form:input type="text" id="loginId" path="loginId"
+								class="form-control" placeholder="LoginId" required=""
+								autofocus="" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+						<div class="col-sm-4">
+							<form:input type="password" id="inputPassword" path="password"
+								class="form-control" placeholder="Password" required="" />
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="checkbox mb-3">
+							<label> <form:checkbox path="remember"
+									value="remember-me" /> Remember me
+							</label>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-sm-10">
+							<button type="submit" class="btn btn-primary">Sign in</button>
+						</div>
+					</div>
+					<p class="mt-5 mb-3 text-muted">© 2017-2018</p>
 		</form:form>
 	</div>
 

@@ -3,9 +3,9 @@
 <!--命名空间应该是对应接口的包名+接口名 -->
 <mapper namespace="spring.model.mapper.UserMapper">
 	<resultMap type="spring.domain.UserInfo" id="userResultMap">
-		<id property="userId" column="userId" />
+		<id property="userId" column="uid" />
 		<result property="loginId" column="loginId" />
-		<result property="userName" column="userName" />
+		<result property="userName" column="uname" />
 		<result property="password" column="password" />
 		<result property="email" column="email" />
 		<result property="phone" column="phone" />

@@ -7,10 +7,10 @@ import org.apache.ibatis.annotations.Select;
 import spring.domain.UserInfo;
 
 public interface UserMapper {
-	static String COLUMN = "userId, loginId, userName, password, email, phone, valid, gmt_create, gmt_modified";
+	static String COLUMN = "uid, loginId, uname, password, email, phone, valid, gmt_create, gmt_modified";
 
 	@Select("SELECT " + COLUMN + " FROM user WHERE loginId = #{id}")
 	@ResultMap("userResultMap")
-	UserInfo getUser(@Param("id") Integer id);
+	UserInfo getUser(@Param("id") String id);
 
 }

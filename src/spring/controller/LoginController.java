@@ -2,23 +2,28 @@ package spring.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import spring.domain.UserInfo;
+import spring.domain.LoginInfo;
+import spring.service.UserService;
 
 @Controller
 @RequestMapping("/")
 public class LoginController {
 
+	@Autowired
+	private UserService userService;
+
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String index(ModelMap modelMap, HttpSession session) {
-		UserInfo user = (UserInfo) session.getAttribute("USER_SESSION");
+		LoginInfo loginUser = (LoginInfo) session.getAttribute("USER_SESSION");
 		String msg = "未登录";
-		if (null != user)
-			msg = "欢迎：" + user.getUserName();
+		if (null != loginUser)
+			msg = "欢迎：" + loginUser.getUserName();
 		modelMap.put("msg", msg);
 		return "index";
 	}
@@ -28,7 +33,7 @@ public class LoginController {
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String toLogin(ModelMap modelMap) {
-		modelMap.put("user", new UserInfo());
+		modelMap.put("user", new LoginInfo());
 		return "login";
 	}
 
@@ -41,20 +46,14 @@ public class LoginController {
 	 * @return
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(UserInfo user, ModelMap modelMap, HttpSession session) {
-		// 获取用户名和密码
-		String loginId = user.getLoginId();
-		String password = user.getPassword();
-		// 些处横板从数据库中获取对用户名和密码后进行判断
-		if (loginId != null && loginId.equals("admin") && password != null && password.equals("admin")) {
-			// 将用户对象添加到Session中
-			session.setAttribute("USER_SESSION", user);
+	public String login(LoginInfo loginUser, ModelMap modelMap, HttpSession session) {
+		if (userService.loginValidate(loginUser, session)) {
 			// 重定向到主页面的跳转方法
 			return "redirect:index";
 		}
-		modelMap.addAttribute("msg", "用户名或密码错误，请重新登录！");
-		user.setPassword(null);
-		modelMap.addAttribute("user", user);
+		loginUser.setPassword(null);
+		modelMap.addAttribute("msg", "用户名或密码错误，请重新输入！");
+		modelMap.addAttribute("user", loginUser);
 		return "login";
 	}
 
