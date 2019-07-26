@@ -14,6 +14,7 @@ import spring.service.UserService;
 @Controller
 @RequestMapping("/")
 public class LoginController {
+	//TODO 用Spring security 实现登录及记住我功能。
 
 	@Autowired
 	private UserService userService;
