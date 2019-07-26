@@ -20,6 +20,8 @@
 
 	<!-- 配置静态资源访问 -->
 	<mvc:resources mapping="/js/**" location="WEB-INF/js/" />
+	<mvc:resources mapping="/img/**" location="WEB-INF/img/" />
+
 
 	<!-- 配置主页 -->
 	<mvc:view-controller path="/" view-name="index" />
