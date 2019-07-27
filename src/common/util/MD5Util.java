@@ -85,6 +85,9 @@ public class MD5Util {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(textToMD5U16("admin"));
+		
+		System.out.println(textToMD5U16("Stt0123456"));
+		System.out.println(textToMD5U16("012345"));
+		//6BEC0D9D93C7B52A
 	}
 }
